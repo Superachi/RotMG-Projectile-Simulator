@@ -5,15 +5,25 @@ function bulletCreate(_actionStruct, _visualStruct) {
 	with(o) {
 		// Behaviour
 		lifeTime = _actionStruct.lifeTime;
+		lifeTimeBase = lifeTime;
+		
 		projSpeed = _actionStruct.projSpeed;
 		projDir = _actionStruct.projDir;
+		
+		boomerang = _actionStruct.boomerang;
+		reverseMult = 1;
 		
 		// Visuals
 		sprite_index = global.projSprite;
 		size = _visualStruct.size;
+		
 		animDelay = _visualStruct.animDelay;
 		animFrame = 0;
 		delayTime = 0;
+		
+		animRotate = _visualStruct.animRotate;
+		rotateAngle = 0;
+		
 		faceDir = _visualStruct.faceDir;
 		faceDiag = _visualStruct.faceDiag;
 
@@ -41,10 +51,11 @@ function bulletCreateMulti(_actionStruct, _visualStruct, _amount, _arc) {
 }
 
 // Set the bullet's behaviour, such as how long it lasts or its trajectory
-function bulletAction(_lifeTime, _speed, _dir) constructor {
+function bulletAction(_lifeTime, _speed, _dir, _boomerang) constructor {
 	lifeTime = _lifeTime;
 	projSpeed = _speed;
 	projDir = _dir;
+	boomerang = _boomerang;
 }
 
 // Set the bullet's visual appearance
@@ -71,5 +82,6 @@ function bulletVisual(_size, _animDelay, _faceDir, _faceDiag, _stopOnLastFrame, 
 	stopOnLastFrame = _stopOnLastFrame;
 	
 	// The speed at which the sprite of the projectile rotates
+	// Value 100 = 1 rotation per second
 	animRotate = _animRotate;
 }

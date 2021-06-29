@@ -1,7 +1,7 @@
 /// @desc Load in a sprite sheet
-if keyboard_check_pressed(vk_space) {
+if (mouse_check_button_pressed(mb_left) && global.projSprite == -1) ||
+	keyboard_check_pressed(vk_enter) {
 	file = get_open_filename_ext("", "", "", "Open a sprite sheet");
-	//global.projSprite = -1;
 
 	if file != "" {
 		// Save the sprite in a temporary variable
@@ -23,5 +23,7 @@ if keyboard_check_pressed(vk_space) {
 		if instance_exists(objProjectile) {
 			instance_destroy(objProjectile);
 		}
+	} else {
+		show_message("Oops! Something went wrong loading the sprite.")
 	}
 }

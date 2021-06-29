@@ -1,5 +1,9 @@
 /// @desc Set the firing speed of the object
-cooldownBase = 6;
-cooldownTime = 0;
+actionStruct = new bulletAction(60, 8, 0, false);
+visualStruct = new bulletVisual(100, 0.1, true, false, false, 0);
 
-visible = false;
+emitCooldown = 12;
+emitArc = 0;
+emitAmount = 1;
+
+cooldownTime = 0;

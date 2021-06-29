@@ -3,10 +3,27 @@ if cooldownTime > 0 {
 	cooldownTime --;
 }
 
-if mouse_check_button(mb_left) && cooldownTime == 0 && global.projSprite != -1 {
-	cooldownTime = cooldownBase;
-	var dir = point_direction(x, y, mouse_x, mouse_y);
-	var action = new bulletAction(100, 6, dir);
-	var visual = new bulletVisual(100, 0.05, true, false, true, 0);
-	bulletCreateMulti(action, visual, 5, 5)
+// Shoot
+if mouse_check_button(mb_left)
+&& cooldownTime == 0
+&& global.projSprite != -1
+&& global.heldButton == noone {
+	cooldownTime = emitCooldown;
+	actionStruct.projDir = point_direction(x, y, mouse_x, mouse_y);
+	bulletCreateMulti(actionStruct, visualStruct, emitAmount, emitArc)
 }
+
+// Move
+var spd = 4;
+var deltaX = keyboard_check(ord("D")) - keyboard_check(ord("A"))
+var deltaY = keyboard_check(ord("S")) - keyboard_check(ord("W"))
+if deltaX != 0 {
+	x += deltaX * spd;
+}
+
+if deltaY != 0 {
+	y += deltaY * spd;
+}
+
+x = clamp(x, 0, room_width);
+y = clamp(y, 0, room_height);
