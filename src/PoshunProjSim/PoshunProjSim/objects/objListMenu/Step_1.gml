@@ -15,3 +15,7 @@ var _yOff = menuScrollY;
 with (objListMenuButton) {
 	scrollY = _yOff;
 }
+
+if keyboard_check_pressed(vk_escape) {
+	menuOpened = !menuOpened;
+}

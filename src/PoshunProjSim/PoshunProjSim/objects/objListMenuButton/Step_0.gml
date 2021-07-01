@@ -3,7 +3,7 @@ buttonY = startY + scrollY;
 hover = false;
 active = false;
 
-if global.popupDialogue {
+if global.popupDialogue || !objListMenu.menuOpened {
 	exit;
 }
 
@@ -29,7 +29,9 @@ if (active
 }
 
 if hover && mouse_check_button_pressed(mb_left) {
-	createDialogueBox(room_width div 2, 200, 400, "Error: no sprite loaded in", "Did you close the file selection window without selecting a file?", "Okay thanks");
+	if buttonFunction != -1 {
+		script_execute(buttonFunction);
+	}
 }
 
 if drawAlpha < 1 {

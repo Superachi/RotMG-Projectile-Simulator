@@ -7,14 +7,10 @@ if hover {
 
 // Configure the drawing settings
 draw_set_alpha(1);
-draw_set_color(c_white);
-draw_set_font(fnt_default);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
 
 // Draw the button and it text
 draw_sprite_stretched(sprMenuButtonGreen, _imageInd, buttonX, buttonY, buttonWidth, buttonHeight);
-draw_text(buttonX + buttonWidth div 2, buttonY + buttonHeight div 2, buttonText);
+drawTextCustom(buttonText, buttonX + buttonWidth div 2, buttonY + buttonHeight div 2 - 10, fnt_default_bold, c_white, fa_center, fa_middle, 1, 0, buttonWidth);
 
 // Reset the alpha
 draw_set_alpha(1);

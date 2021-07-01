@@ -1,4 +1,9 @@
 /// @desc Draw the button + text
+if !objListMenu.menuOpened {
+	exit;
+}
+
+// Change button texture when hovered
 var _imageInd = 0;
 
 if hover {

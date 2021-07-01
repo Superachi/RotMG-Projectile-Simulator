@@ -6,16 +6,11 @@ enum menuPages {
 }
 
 // Menu navigation
-menuOpened = false;
-currentPage = menuPages.home;
+menuOpened = true;
+global.currentPage = menuPages.home;
 
 buttonList = ds_list_create();
-
-// Temp create buttons
-for (var i = 0; i < 30; i ++) {
-	var obj = createListMenuButton(buttonList, room_width - 236, 200, 64, 8, "Button " + string(i + 1), 0);
-	ds_list_add(buttonList, obj);
-}
+createMenu(global.currentPage, buttonList);
 
 // Scrolling
 menuScrollY = 0;
