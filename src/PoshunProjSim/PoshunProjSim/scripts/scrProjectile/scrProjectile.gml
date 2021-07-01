@@ -24,6 +24,7 @@ function bulletCreate(_actionStruct, _visualStruct) {
 		
 		// ----- Visuals
 		sprite_index = global.projSprite;
+		image_speed = 0;
 		size = _visualStruct.size;
 		
 		animDelay = _visualStruct.animDelay;

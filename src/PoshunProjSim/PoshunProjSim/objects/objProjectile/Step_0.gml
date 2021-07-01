@@ -1,4 +1,8 @@
 /// @desc Let the bullet act and animate
+if global.popupDialogue {
+	exit;
+}
+
 // Move the projectile
 x += lengthdir_x(projSpeed * reverseMult, projDir);
 y += lengthdir_y(projSpeed * reverseMult, projDir);

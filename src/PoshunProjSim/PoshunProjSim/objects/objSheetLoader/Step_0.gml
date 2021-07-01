@@ -1,6 +1,5 @@
 /// @desc Load in a sprite sheet
-if (mouse_check_button_pressed(mb_left) && global.projSprite == -1) ||
-	keyboard_check_pressed(vk_enter) {
+if (keyboard_check_pressed(vk_enter)) {
 	file = get_open_filename_ext("", "", "", "Open a sprite sheet");
 
 	if file != "" {

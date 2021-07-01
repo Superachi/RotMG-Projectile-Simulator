@@ -1,4 +1,8 @@
 /// @desc Allow the object to fire
+if global.popupDialogue {
+	exit;
+}
+
 if cooldownTime > 0 {
 	cooldownTime --;
 }
