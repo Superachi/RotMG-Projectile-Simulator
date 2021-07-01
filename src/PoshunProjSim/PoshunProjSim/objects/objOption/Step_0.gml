@@ -41,6 +41,10 @@ if !mouse_check_button(mb_left) {
 	global.heldButton = noone;
 }
 
+if keyboard_check_pressed(ord("R")) {
+	option_value = irandom_range(option_min, option_max);
+	slider_value = round((option_value - option_min) / oRange * slider_length);
+}
 
 // Apply the value to the chosen emitter
 var obj = objShooter;
@@ -51,9 +55,6 @@ switch option_type {
 	break;
 	case optionTypes.projSpeed:
 		obj.actionStruct.projSpeed = option_value;
-	break;
-	case optionTypes.projDir:
-		obj.actionStruct.projDir = option_value;
 	break;
 	case optionTypes.boomerang:
 		obj.actionStruct.boomerang = option_value;
@@ -71,7 +72,16 @@ switch option_type {
 	break;
 	
 	// Visual
+	case optionTypes.animDelay:
+		obj.visualStruct.animDelay = option_value;
+	break;
 	case optionTypes.animRotate:
 		obj.visualStruct.animRotate = option_value;
+	break;
+	case optionTypes.faceDiag:
+		obj.visualStruct.faceDiag = option_value;
+	break;
+	case optionTypes.stopOnLastFrame:
+		obj.visualStruct.stopOnLastFrame = option_value;
 	break;
 }

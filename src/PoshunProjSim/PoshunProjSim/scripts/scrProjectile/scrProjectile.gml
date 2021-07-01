@@ -3,7 +3,8 @@
 function bulletCreate(_actionStruct, _visualStruct) {
 	var o = instance_create_depth(x, y, 0, objProjectile);
 	with(o) {
-		// Behaviour
+		// ----- Behaviour
+		// General
 		lifeTime = _actionStruct.lifeTime;
 		lifeTimeBase = lifeTime;
 		
@@ -13,7 +14,15 @@ function bulletCreate(_actionStruct, _visualStruct) {
 		boomerang = _actionStruct.boomerang;
 		reverseMult = 1;
 		
-		// Visuals
+		// Acceleration
+		accelDelay = _actionStruct.accelDelay;
+		accelGoal = _actionStruct.accelGoal;
+		accelTime = _actionStruct.accelTime;
+		
+		// How much to increment the speed with, once acceleration starts
+		accelInc = (accelGoal - projSpeed) / accelTime;
+		
+		// ----- Visuals
 		sprite_index = global.projSprite;
 		size = _visualStruct.size;
 		
@@ -51,11 +60,18 @@ function bulletCreateMulti(_actionStruct, _visualStruct, _amount, _arc) {
 }
 
 // Set the bullet's behaviour, such as how long it lasts or its trajectory
-function bulletAction(_lifeTime, _speed, _dir, _boomerang) constructor {
+function bulletAction(_lifeTime, _speed, _dir, _boomerang, _accelDelay, _accelTime, _accelGoal) constructor {
+	// General
 	lifeTime = _lifeTime;
 	projSpeed = _speed;
 	projDir = _dir;
 	boomerang = _boomerang;
+	
+	// Acceleration
+	accelDelay = _accelDelay;	// How many frames until the bullet starts changing speed
+								// Set this value to -1 to disable this feature
+	accelTime = _accelTime;		// The amount of time it takes after the delay to reach the desired speed
+	accelGoal = _accelGoal;		// The amount of speed to accelerate (or decelerate) towards
 }
 
 // Set the bullet's visual appearance

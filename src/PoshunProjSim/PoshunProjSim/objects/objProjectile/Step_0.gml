@@ -6,26 +6,42 @@ y += lengthdir_y(projSpeed * reverseMult, projDir);
 delayTime --;
 lifeTime --;
 
-// Set the animation frame
-if delayTime <= 0 {
-	delayTime = round(animDelay * 60);
-	
-	if !(stopOnLastFrame && animFrame == image_number) {
-		animFrame ++;
+#region Behaviour
+	// Destroy self when the lifetime hits 0
+	if lifeTime <= 0 {
+		instance_destroy();
 	}
-}
 
-// Reverse trajectory if boomerang is true
-if boomerang && (lifeTime < lifeTimeBase div 2 + 1) {
-	reverseMult = -1;
-}
+	// Reverse trajectory if boomerang is true
+	if boomerang && (lifeTime < lifeTimeBase div 2 + 1) {
+		reverseMult = -1;
+	}
+	
+	// Accelerate
+	if accelDelay > 0 {
+		accelDelay --;
+	} else {
+		if accelDelay != -1 && accelTime > 0 {
+			accelTime --;
+			projSpeed += accelInc;
+		}
+	}
 
-// Destroy self when the lifetime hits 0
-if lifeTime <= 0 {
-	instance_destroy();
-}
+#endregion
 
-// Rotate the sprite
-if animRotate != 0 {
-	rotateAngle += animRotate;
-}
+#region Visual
+	// Set the animation frame
+	if delayTime <= 0 {
+		delayTime = animDelay;
+	
+		if !(stopOnLastFrame && animFrame == image_number) {
+			animFrame ++;
+		}
+	}
+
+	// Rotate the sprite
+	if animRotate != 0 {
+		rotateAngle += animRotate;
+	}
+	
+#endregion

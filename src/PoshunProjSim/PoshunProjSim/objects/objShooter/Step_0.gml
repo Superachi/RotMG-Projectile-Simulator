@@ -4,7 +4,7 @@ if cooldownTime > 0 {
 }
 
 // Shoot
-if mouse_check_button(mb_left)
+if mouse_check_button(mb_left) && mouse_x < room_width - 160
 && cooldownTime == 0
 && global.projSprite != -1
 && global.heldButton == noone {
