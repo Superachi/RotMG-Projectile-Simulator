@@ -1,27 +1,29 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function createMenu(_page, _dsList){
+function createMenu(_page){
 	global.currentPage = _page;
 	
+	var _dsList = global.buttonList;
 	ds_list_clear(_dsList)
 	instance_destroy(parMenuButton);
 	
-	var _x = room_width - 236;
+	var _structGeneric = new buttonBaseStruct(room_width - 236, 0, 200, 64, 8);
+	var _structBack = new buttonBaseStruct(room_width - 186, 0, 100, 48, 8);
 	
 	switch _page {
 		case menuPages.home:
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Import sprite sheet",			importSprite);
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Import background",				importBackground);
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Trajectory (soonTM)",			-1);
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Visuals (soonTM)",				-1);
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Emitter (soonTM)",				-1);
-			createListMenuButton(_dsList, _x, 200, 64, 8, "Bullet presets (soonTM)",		-1);
+			createListMenuButton(_structGeneric, "Import sprite sheet",		importSprite, -1);
+			createListMenuButton(_structGeneric, "Import background",			importBackground, -1);
+			createListMenuButton(_structGeneric, "Trajectory (soonTM)",		createMenu, [menuPages.trajectory]);
+			createListMenuButton(_structGeneric, "Visuals (soonTM)",			createMenu, [menuPages.visual]);
+			createListMenuButton(_structGeneric, "Emitter (soonTM)",			-1);
+			createListMenuButton(_structGeneric, "Bullet presets (soonTM)",	-1);
 		break;
-		case menuPages.action:
-			createListMenuButton(_dsList, _x + 50, 100, 64, 8, "Back", menuPages.home);
+		case menuPages.trajectory:
+			createListMenuButton(_structBack, "Back", createMenu, [menuPages.home]);
 		break;
 		case menuPages.visual:
-			createListMenuButton(_dsList, _x + 50, 100, 64, 8, "Back", menuPages.home);
+			createListMenuButton(_structBack, "Back", createMenu, [menuPages.home]);
 		break;
 	}
 }

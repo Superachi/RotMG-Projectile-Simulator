@@ -18,7 +18,7 @@ switch (global.currentPage) {
 	case menuPages.home:
 		menuName = "Home";
 	break;
-	case menuPages.action:
+	case menuPages.trajectory:
 		menuName = "Trajectory settings";
 	break;
 	case menuPages.visual:

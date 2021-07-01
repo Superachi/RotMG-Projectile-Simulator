@@ -73,7 +73,7 @@ function getDefaultValues(_optionType){
 		break;
 	}
 }
-
+/*
 function createOptionButton(_optionType, _x, _y) {
 	var obj = instance_create_depth(_x, _y, 0, objOption);
 	with (obj) {

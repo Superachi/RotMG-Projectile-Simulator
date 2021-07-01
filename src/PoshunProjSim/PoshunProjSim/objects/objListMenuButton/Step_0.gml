@@ -30,7 +30,11 @@ if (active
 
 if hover && mouse_check_button_pressed(mb_left) {
 	if buttonFunction != -1 {
-		script_execute(buttonFunction);
+		if buttonArguments != -1 {
+			script_execute_ext(buttonFunction, buttonArguments);
+		} else {
+			script_execute(buttonFunction);
+		}
 	}
 }
 
