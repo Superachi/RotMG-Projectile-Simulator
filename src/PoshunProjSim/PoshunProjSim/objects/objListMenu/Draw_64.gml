@@ -1,5 +1,5 @@
 /// @desc Draw the sidebar and menu name
-if !menuOpened {
+if !global.menuOpened {
 	exit;
 }
 
@@ -7,12 +7,6 @@ draw_set_alpha(0.6);
 draw_sprite_stretched(sprSidebar, 0, room_width - 252, 0, room_width, room_height);
 
 // Draw the menu's name
-draw_set_alpha(1);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
-draw_set_font(fnt_default_bold);
-draw_set_color(c_white);
-
 var menuName = "Undefined";
 switch (global.currentPage) {
 	case menuPages.home:
@@ -26,9 +20,12 @@ switch (global.currentPage) {
 	break;
 }
 
-draw_text(room_width - 136, 16, menuName);
+drawTextCustom(menuName, room_width - 136, 16 + menuScrollY, fnt_default_bold, c_white, fa_center, fa_center, 1, 16, 200);
 
 // Draw the scrollbar
+draw_set_alpha(1);
+draw_text(128,128, menuHeight);
+	
 draw_set_alpha(0.6);
 if menuHeight > room_height {
 	draw_set_color(c_white);

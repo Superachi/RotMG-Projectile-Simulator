@@ -12,10 +12,11 @@ menuScrollYGoal = clamp(menuScrollYGoal, menuScrollYMax, 0);
 menuScrollY += (menuScrollYGoal - menuScrollY) / 4;
 var _yOff = menuScrollY;
 
-with (objListMenuButton) {
+with (parMenuButton) {
 	scrollY = _yOff;
+	buttonY = startY + scrollY;
 }
 
 if keyboard_check_pressed(vk_escape) {
-	menuOpened = !menuOpened;
+	global.menuOpened = !global.menuOpened;
 }

@@ -1,9 +1,8 @@
 /// @desc Interact with the button
-buttonY = startY + scrollY;
 hover = false;
 active = false;
 
-if global.popupDialogue || !objListMenu.menuOpened {
+if global.popupDialogue || !global.menuOpened {
 	exit;
 }
 

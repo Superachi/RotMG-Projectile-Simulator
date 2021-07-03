@@ -1,5 +1,5 @@
 /// @desc Draw the button + text
-if !objListMenu.menuOpened {
+if !global.menuOpened {
 	exit;
 }
 
@@ -10,16 +10,7 @@ if hover {
 	_imageInd = 1;
 }
 
-// Configure the drawing settings
-draw_set_alpha(drawAlpha);
-draw_set_color(c_white);
-draw_set_font(fnt_default);
-draw_set_halign(fa_center);
-draw_set_valign(fa_center);
-
-// Draw the button and it text
-draw_sprite_stretched(sprMenuButton, _imageInd, buttonX, buttonY, buttonWidth, buttonHeight);
-draw_text(buttonX + buttonWidth div 2, buttonY + buttonHeight div 2, buttonText);
-
-// Reset the alpha
+// Draw the button and its text
 draw_set_alpha(1);
+draw_sprite_stretched(sprMenuButton, _imageInd, buttonX, buttonY, buttonWidth, buttonHeight);
+drawTextCustom(buttonText, buttonX + buttonWidth div 2, buttonY + buttonHeight div 2, fnt_default, c_white, fa_center, fa_center, 1, 16, buttonWidth);

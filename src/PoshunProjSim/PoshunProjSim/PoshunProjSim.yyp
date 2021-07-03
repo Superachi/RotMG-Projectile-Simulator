@@ -14,7 +14,7 @@
     {"id":{"name":"objControl","path":"objects/objControl/objControl.yy",},"order":3,},
     {"id":{"name":"objListMenuButton","path":"objects/objListMenuButton/objListMenuButton.yy",},"order":1,},
     {"id":{"name":"sprMenuButtonGreen","path":"sprites/sprMenuButtonGreen/sprMenuButtonGreen.yy",},"order":5,},
-    {"id":{"name":"sprButtonSlider","path":"sprites/sprButtonSlider/sprButtonSlider.yy",},"order":3,},
+    {"id":{"name":"sprSliderButton","path":"sprites/sprSliderButton/sprSliderButton.yy",},"order":3,},
     {"id":{"name":"scrMenuHandling","path":"scripts/scrMenuHandling/scrMenuHandling.yy",},"order":2,},
     {"id":{"name":"scrDrawingText","path":"scripts/scrDrawingText/scrDrawingText.yy",},"order":3,},
     {"id":{"name":"sprOptionIcons","path":"sprites/sprOptionIcons/sprOptionIcons.yy",},"order":6,},

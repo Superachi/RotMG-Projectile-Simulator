@@ -19,32 +19,37 @@ function buttonApplyBaseStruct(_buttonBaseStruct) {
 // Get the height of the list menu in pixels
 // This can be used to calculate how far the user can scroll the menu
 function getListMenuHeight() {
-	var _listHeight = 0;
-	with(objListMenuButton) {
-		_listHeight += buttonHeight + bottomPadding;
+	var _h = 0;
+	with(parMenuButton) {
+		_h += buttonHeight + bottomPadding;
 	}
 	
-	show_debug_message("The height of the list is: " + string(_listHeight));
-	return _listHeight;
+	menuHeight = _h;
+	menuScrollYMax = menuHeight * -1 + (room_height - global.buttonList[| ds_list_size(global.buttonList) - 1].buttonHeight);
+	show_debug_message("The height of the list is: " + string(menuHeight));
 }
 
-// Create a button to be placed within the list menu
-function createListMenuButton(_buttonBaseStruct, _text, _function, _arguments) {
-	var _dsList = global.buttonList;
+// Check the last button from a given ds_list. Return a new y-value based on its Y, height and padding values
+function getPreviousButtonY (_dsList) {
 	var _prevButton = noone;
-	var _y;
+	var _y = 32;
 	
-	// Get the position of the previous button, then add it to this button's Y coordinates
+	// Look at the last button within the given ds_list
 	if (ds_list_size(_dsList) > 0) {
 		_prevButton = ds_list_find_value(_dsList, ds_list_size(_dsList) - 1);
 	}
 	
+	// If a button was found, return its Y. Otherwise, return a default value
 	if _prevButton != noone {
 		_y = _prevButton.buttonY + _prevButton.buttonHeight + _prevButton.bottomPadding;
-	} else {
-		_y = 32;
 	}
 	
+	return _y;
+}
+
+// Create a button to be placed within the list menu
+function createListMenuButton(_buttonBaseStruct, _text, _function, _arguments) {
+	var _y = getPreviousButtonY(global.buttonList);
 	var obj = instance_create_depth(0, 0, 0, objListMenuButton);
 	with(obj) {
 		buttonApplyBaseStruct(_buttonBaseStruct);
@@ -61,16 +66,35 @@ function createListMenuButton(_buttonBaseStruct, _text, _function, _arguments) {
 		buttonArguments = (_arguments == undefined) ? -1 : _arguments;
 	}
 	
-	ds_list_add(_dsList, obj);
+	ds_list_add(global.buttonList, obj);
 	return obj;
 }
 
 // Create a slider object, used for adjusting the value of a parameter
 function createParamSlider(_buttonBaseStruct, _paramId) {
-	var obj = instance_create_depth(0, 0, -10, objParamSlider);
+	var _y = getPreviousButtonY(global.buttonList);
+	var obj = instance_create_depth(0, 0, 0, objParamSlider);
 	with (obj) {
 		buttonApplyBaseStruct(_buttonBaseStruct);
+		
+		// The Y-coordinates of the button
+		buttonY = _y;
+		startY = buttonY;
+		
+		buttonText = "Param name";
+		
+		// Slider dimensions/coordinates
+		sliderX = buttonX + 16;
+		sliderY = buttonY + buttonHeight - 20
+		sliderWidth = buttonWidth - 32;
+		sliderHeight = 6;
+		
+		sliderPos = 0;
+		sliderPercentage = 0;
 	}
+	
+	ds_list_add(global.buttonList, obj);
+	return obj;
 }
 
 // Temp: remove this function, replace it with the new createParamSlider

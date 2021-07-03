@@ -12,4 +12,5 @@ if (global.projSprite != -1) {
 draw_set_valign(fa_bottom);
 draw_text(16, room_height - 16,
 	"FPS: " + string(displayFps)
-	+ "\nInstances: " + string(instance_count));
+	+ "\nInstances: " + string(instance_count)
+	+ "\nProjectiles: "+string(instance_number(objProjectile)));
