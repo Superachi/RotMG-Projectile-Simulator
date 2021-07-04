@@ -7,8 +7,20 @@ if cooldownTime > 0 {
 	cooldownTime --;
 }
 
+if abs(mouse_x - x) < hitboxSize && abs(mouse_y - y) < hitboxSize {
+	if mouse_check_button_pressed(mb_left) {
+		if global.selectedEmitter != id {
+			global.selectedEmitter = id;
+			createMenu(menuPages.emitterSelected);
+		} else {
+			global.selectedEmitter = noone;
+			createMenu(menuPages.home);
+		}
+	}
+}
+
 // Shoot
-if mouse_check_button(mb_left) && mouse_x < room_width - 160
+else if mouse_check_button(mb_left) && mouse_x < room_width - 160
 && cooldownTime == 0
 && global.projSprite != -1
 && global.heldButton == noone {
@@ -18,7 +30,7 @@ if mouse_check_button(mb_left) && mouse_x < room_width - 160
 }
 
 // Move
-var spd = 4;
+var spd = 6;
 var deltaX = keyboard_check(ord("D")) - keyboard_check(ord("A"))
 var deltaY = keyboard_check(ord("S")) - keyboard_check(ord("W"))
 if deltaX != 0 {

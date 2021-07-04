@@ -6,6 +6,7 @@
     {"id":{"name":"scrProjectile","path":"scripts/scrProjectile/scrProjectile.yy",},"order":0,},
     {"id":{"name":"objSheetLoader","path":"objects/objSheetLoader/objSheetLoader.yy",},"order":0,},
     {"id":{"name":"sprButtonIcons","path":"sprites/sprButtonIcons/sprButtonIcons.yy",},"order":1,},
+    {"id":{"name":"scrButtons","path":"scripts/scrButtons/scrButtons.yy",},"order":7,},
     {"id":{"name":"sprCrab","path":"sprites/sprCrab/sprCrab.yy",},"order":4,},
     {"id":{"name":"sprMenuButton","path":"sprites/sprMenuButton/sprMenuButton.yy",},"order":1,},
     {"id":{"name":"fnt_default_bold","path":"fonts/fnt_default_bold/fnt_default_bold.yy",},"order":1,},
@@ -18,6 +19,7 @@
     {"id":{"name":"scrMenuHandling","path":"scripts/scrMenuHandling/scrMenuHandling.yy",},"order":2,},
     {"id":{"name":"scrDrawingText","path":"scripts/scrDrawingText/scrDrawingText.yy",},"order":3,},
     {"id":{"name":"sprOptionIcons","path":"sprites/sprOptionIcons/sprOptionIcons.yy",},"order":6,},
+    {"id":{"name":"scrParamConfig","path":"scripts/scrParamConfig/scrParamConfig.yy",},"order":8,},
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},"order":0,},
     {"id":{"name":"objProjectile","path":"objects/objProjectile/objProjectile.yy",},"order":1,},
     {"id":{"name":"objOption","path":"objects/objOption/objOption.yy",},"order":0,},
@@ -31,6 +33,7 @@
     {"id":{"name":"scrDialogueBox","path":"scripts/scrDialogueBox/scrDialogueBox.yy",},"order":6,},
     {"id":{"name":"objDialogueButton","path":"objects/objDialogueButton/objDialogueButton.yy",},"order":2,},
     {"id":{"name":"scrMenuCreation","path":"scripts/scrMenuCreation/scrMenuCreation.yy",},"order":4,},
+    {"id":{"name":"objListMenuSeperator","path":"objects/objListMenuSeperator/objListMenuSeperator.yy",},"order":6,},
     {"id":{"name":"rmApp","path":"rooms/rmApp/rmApp.yy",},"order":0,},
   ],
   "Options": [

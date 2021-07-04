@@ -1,5 +1,3 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 enum optionTypes {
 	lifetime,
 	projSpeed,
@@ -14,20 +12,6 @@ enum optionTypes {
 	animRotate,
 	faceDiag,
 	stopOnLastFrame,
-}
-
-
-function setOptionValues(_startingValue, _minValue, _maxValue, _name, _unit, _iconIndex) {
-	option_value = _startingValue;
-	option_min = _minValue;
-	option_max = _maxValue;
-	option_name = _name;
-	option_unit = _unit;
-	option_icon = _iconIndex;
-	
-	// Update the visual position of the button on the slider
-	var oRange = abs(option_max - option_min);
-	slider_value = round((option_value - option_min) / oRange * slider_length);
 }
 
 function getDefaultValues(_optionType){
@@ -73,11 +57,21 @@ function getDefaultValues(_optionType){
 		break;
 	}
 }
+
 /*
-function createOptionButton(_optionType, _x, _y) {
-	var obj = instance_create_depth(_x, _y, 0, objOption);
-	with (obj) {
-		option_type = _optionType;
-		getDefaultValues(option_type);
-	}
+
+
+function setOptionValues(_startingValue, _minValue, _maxValue, _name, _unit, _iconIndex) {
+	option_value = _startingValue;
+	option_min = _minValue;
+	option_max = _maxValue;
+	option_name = _name;
+	option_unit = _unit;
+	option_icon = _iconIndex;
+	
+	// Update the visual position of the button on the slider
+	var oRange = abs(option_max - option_min);
+	slider_value = round((option_value - option_min) / oRange * slider_length);
 }
+
+*/

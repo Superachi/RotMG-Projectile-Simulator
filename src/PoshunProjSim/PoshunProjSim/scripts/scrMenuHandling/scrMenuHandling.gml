@@ -71,7 +71,7 @@ function createListMenuButton(_buttonBaseStruct, _text, _function, _arguments) {
 }
 
 // Create a slider object, used for adjusting the value of a parameter
-function createParamSlider(_buttonBaseStruct, _paramId) {
+function createParamSlider(_buttonBaseStruct, _paramType) {
 	var _y = getPreviousButtonY(global.buttonList);
 	var obj = instance_create_depth(0, 0, 0, objParamSlider);
 	with (obj) {
@@ -81,27 +81,46 @@ function createParamSlider(_buttonBaseStruct, _paramId) {
 		buttonY = _y;
 		startY = buttonY;
 		
-		buttonText = "Param name";
+		// Parameter local values
+		paramType =		_paramType;
+		paramCurrent	= getEmitterParam(paramType);
+		
+		var struct		= getParamDefaults(paramType);
+		paramMin		= struct.paramMin;
+		paramMax		= struct.paramMax;
+		paramRange		= abs(paramMax - paramMin);
+		paramUnit		= struct.paramUnit;
+		paramRounding	= struct.paramRounding;
+		buttonText		= struct.paramName;
 		
 		// Slider dimensions/coordinates
-		sliderX = buttonX + 16;
+		sliderX = buttonX + 32;
 		sliderY = buttonY + buttonHeight - 20
-		sliderWidth = buttonWidth - 32;
+		sliderWidth = buttonWidth - 64;
 		sliderHeight = 6;
 		
-		sliderPos = 0;
-		sliderPercentage = 0;
+		sliderPercentage = (paramCurrent + abs(paramMin)) / paramRange
+		sliderPos = sliderPercentage * sliderWidth;
 	}
 	
 	ds_list_add(global.buttonList, obj);
 	return obj;
 }
 
-// Temp: remove this function, replace it with the new createParamSlider
-function createOptionButton(_optionType, _x, _y) {
-	var obj = instance_create_depth(_x, _y, 0, objOption);
+// Create a menu seperator, improving menu readability
+function createSeperator(_buttonBaseStruct, _text) {
+	var _y = getPreviousButtonY(global.buttonList);
+	
+	var obj = instance_create_depth(0, 0, 0, objListMenuSeperator);
 	with (obj) {
-		option_type = _optionType;
-		getDefaultValues(option_type);
+		buttonApplyBaseStruct(_buttonBaseStruct);
+		
+		buttonText = _text;
+		buttonHeight = string_height_ext(_text, 16, buttonWidth - 16);
+		buttonY = _y;
+		startY = buttonY;
 	}
+	
+	ds_list_add(global.buttonList, obj);
+	return obj;
 }

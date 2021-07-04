@@ -3,3 +3,4 @@ drawAlpha = 1;
 active = false;
 hover = false;
 scrollY = 0;
+selected = false;

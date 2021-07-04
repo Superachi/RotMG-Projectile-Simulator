@@ -30,6 +30,13 @@ lifeTime --;
 			projSpeed += accelInc;
 		}
 	}
+	
+	// Turning
+	if turnDelay > 0 {
+		turnDelay --;
+	} else {
+		projDir += turnRate;
+	}
 
 #endregion
 
