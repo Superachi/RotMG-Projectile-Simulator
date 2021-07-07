@@ -4,7 +4,7 @@ if !global.menuOpened {
 }
 
 draw_set_alpha(0.6);
-draw_sprite_stretched(sprSidebar, 0, room_width - 252, 0, room_width, room_height);
+draw_sprite_stretched(sprSidebar, 0, global.menuX, 0, room_width, room_height);
 
 drawTextCustom(menuTitle, room_width - 136, 16 + menuScrollY, fnt_default_bold, c_white, fa_center, fa_center, 1, 16, 200);
 

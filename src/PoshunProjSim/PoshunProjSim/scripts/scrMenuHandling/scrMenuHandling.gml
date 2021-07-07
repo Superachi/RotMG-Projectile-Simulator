@@ -107,6 +107,29 @@ function createParamSlider(_buttonBaseStruct, _paramType) {
 	return obj;
 }
 
+// Create a slider object, used for adjusting the value of a parameter
+function createParamBool(_buttonBaseStruct, _paramType) {
+	var _y = getPreviousButtonY(global.buttonList);
+	var obj = instance_create_depth(0, 0, 0, objParamBool);
+	with (obj) {
+		buttonApplyBaseStruct(_buttonBaseStruct);
+		
+		// The Y-coordinates of the button
+		buttonY = _y;
+		startY = buttonY;
+		
+		// Parameter local values
+		paramType =		_paramType;
+		paramCurrent	= getEmitterParam(paramType);
+		
+		var struct		= getParamDefaults(paramType);
+		buttonText		= struct.paramName;
+	}
+	
+	ds_list_add(global.buttonList, obj);
+	return obj;
+}
+
 // Create a menu seperator, improving menu readability
 function createSeperator(_buttonBaseStruct, _text) {
 	var _y = getPreviousButtonY(global.buttonList);

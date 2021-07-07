@@ -14,7 +14,10 @@ menuScrollYGoal = 0;
 menuScrollYInc = 72;
 menuHeight = 0;
 menuScrollYMax = 0;
+
 menuTitle = "";
+global.menuX = room_width - 252;
+global.mouseInMenu = false;
 
 // Menu navigation
 global.disableMouseScrolling = false;

@@ -8,10 +8,10 @@ function bulletAction() constructor {
 	boomerang	= getParamDefaults(ParamTypes.boomerang).paramDefault;
 	
 	// Acceleration
-	accelDelay = 0;		// How many frames until the bullet starts changing speed
-						// Set this value to -1 to disable this feature
-	accelTime = 0;		// The amount of time it takes after the delay to reach the desired speed
-	accelGoal = 0;		// The amount of speed to accelerate (or decelerate) towards
+	accelDelay = 0;				// How many frames until the bullet starts changing speed
+								// Set this value to -1 to disable this feature
+	accelTime = 0;				// The amount of time it takes after the delay to reach the desired speed
+	accelGoal = projSpeed;		// The amount of speed to accelerate (or decelerate) towards
 	
 	// Turning
 	turnDelay = 0;

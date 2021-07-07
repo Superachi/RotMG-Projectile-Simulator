@@ -23,5 +23,7 @@ with (parMenuButton) {
 	buttonY = startY + scrollY;
 }
 
+global.mouseInMenu = mouse_x > global.menuX && global.menuOpened;
+
 // Re-enable scrolling through the menu using the mouse
 global.disableMouseScrolling = false;

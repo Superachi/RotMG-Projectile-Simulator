@@ -20,12 +20,12 @@ if abs(mouse_x - x) < hitboxSize && abs(mouse_y - y) < hitboxSize {
 }
 
 // Shoot
-else if mouse_check_button(mb_left) && mouse_x < room_width - 160
+else if mouse_check_button(mb_left) && !global.mouseInMenu
 && cooldownTime == 0
 && global.projSprite != -1
 && global.heldButton == noone {
 	cooldownTime = emitCooldown;
-	actionStruct.projDir = point_direction(x, y, mouse_x, mouse_y);
+	actionStruct.projDir = random(360);
 	bulletCreateMulti(actionStruct, visualStruct, emitAmount, emitArc)
 }
 

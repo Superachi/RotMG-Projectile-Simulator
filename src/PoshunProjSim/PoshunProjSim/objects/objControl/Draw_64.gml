@@ -6,7 +6,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_alpha(1);
 if (global.projSprite != -1) {
-	draw_text(16, 16, "Sprite loaded, left click to shoot, WASD to move emitter\nPress R to randomize the parameters!");
+	draw_text(16, 16, "Sprite loaded, left click to shoot, WASD to move emitter\nPress C to clear projectiles.");
 }
 
 // Draw FPS

@@ -16,7 +16,7 @@ function createMenu(_page){
 			case menuPages.home:
 				menuTitle = "Home";
 				createListMenuButton(_structGeneric, "Import background",		importBackground, -1);
-				createListMenuButton(_structGeneric, "New bullet emitter",		-1);
+				createSeperator(_structSeperator, "Add new bullet emitter (soonTM)");
 			break;
 			
 			case menuPages.emitterSelected:
@@ -42,7 +42,7 @@ function createMenu(_page){
 				createListMenuButton(_structBack, "Back", createMenu, [menuPages.emitterSelected]);
 				createParamSlider(_structParam, ParamTypes.projLifetime);
 				createParamSlider(_structParam, ParamTypes.projSpeed);
-				createParamSlider(_structParam, ParamTypes.boomerang);
+				createParamBool(_structGeneric, ParamTypes.boomerang);
 				
 				createSeperator(_structSeperator, "Acceleration settings");
 				createParamSlider(_structParam, ParamTypes.accelDelay);
@@ -59,8 +59,8 @@ function createMenu(_page){
 				createListMenuButton(_structBack, "Back", createMenu, [menuPages.emitterSelected]);
 				createParamSlider(_structParam, ParamTypes.animDelay);
 				createParamSlider(_structParam, ParamTypes.animRotate);
-				createParamSlider(_structParam, ParamTypes.faceDiag);
-				createParamSlider(_structParam, ParamTypes.stopOnLastFrame);
+				createParamBool(_structGeneric, ParamTypes.faceDiag);
+				createParamBool(_structGeneric, ParamTypes.stopOnLastFrame);
 			break;
 			
 			case menuPages.emitter:
