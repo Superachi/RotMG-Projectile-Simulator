@@ -25,20 +25,22 @@ else if mouse_check_button(mb_left) && !global.mouseInMenu
 && global.projSprite != -1
 && global.heldButton == noone {
 	cooldownTime = emitCooldown;
-	actionStruct.projDir = random(360);
+	actionStruct.projDir = point_direction(x, y, mouse_x, mouse_y);
 	bulletCreateMulti(actionStruct, visualStruct, emitAmount, emitArc)
 }
 
 // Move
-var spd = 6;
-var deltaX = keyboard_check(ord("D")) - keyboard_check(ord("A"))
-var deltaY = keyboard_check(ord("S")) - keyboard_check(ord("W"))
-if deltaX != 0 {
-	x += deltaX * spd;
-}
+if global.selectedEmitter == id {
+	var spd = 6;
+	var deltaX = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+	var deltaY = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+	if deltaX != 0 {
+		x += deltaX * spd;
+	}
 
-if deltaY != 0 {
-	y += deltaY * spd;
+	if deltaY != 0 {
+		y += deltaY * spd;
+	}
 }
 
 x = clamp(x, 0, room_width);
